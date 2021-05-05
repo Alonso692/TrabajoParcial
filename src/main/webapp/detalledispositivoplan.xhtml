@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Detalle de Dispositivo-Plan:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Detalle de Dispositivo-Plan</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>		
+			<h:outputLabel for="idDetalleDispositivoPlan" value="Id " styleClass="control-label" />
+			<p:inputText autocomplete="off" id="idDetalleDispositivoPlan"
+				styleClass="form-control" value="#{detalleDispositivoPlanController.detalleDispositivoPlan.idDetalleDispositivoPlan}"
+				required="true" />
+				
+			<h:outputLabel for="descripcionDetalleDP" value="Descripcion"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="descripcionDetalleDP"
+				styleClass="form-control"
+				value="#{detalleDispositivoPlanController.detalleDispositivoPlan.descripcionDetalleDP}" maxlength="100"
+				required="true" />
+				
+			<p:outputLabel for="cboPlan" value="Plan" />
+			<p:selectOneMenu id="cboPlan" value="#{detalleDispositivoPlanController.detalleDispositivoPlan.plan}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{detalleDispositivoPlanController.listaPlanes}" var = "p" 
+					itemLabel="#{p.nombrePlan}" itemValue="#{p}"/>
+			</p:selectOneMenu> 						
+			
+			<p:outputLabel for="cboDispositivo" value="Dispositivo" />
+			<p:selectOneMenu id="cboDispositivo" value="#{detalleDispositivoPlanController.detalleDispositivoPlan.dispositivo}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{detalleDispositivoPlanController.listaDispositivos}" var = "d" 
+					itemLabel="#{s.nombreServicio}" itemValue="#{d}"/>
+			</p:selectOneMenu> 						
+				
+			<br />
+
+			<p:commandButton value="Grabar"
+				actionListener="#{detalleDispositivoPlanController.insertar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listDetalleDispositivoPlan?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listDetalleDispositivoPlan?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+		</h:form>
+		
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
