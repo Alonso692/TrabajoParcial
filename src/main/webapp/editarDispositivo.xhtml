@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Actualizar Dispositivos:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Actualizar Dispositivo</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			
+			<h:outputLabel for="idDispositivo" value="Id" styleClass="control-label" />
+	
+			<p:inputText autocomplete="off" id="idDispositivo"
+				styleClass="form-control" value="#{dispositivoController.dispositivo.idDispositivo}"
+				required="true" readonly="true" />
+			
+			<h:outputLabel for="tipoDispositivo" value="Tipo de Dispositivo "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="tipoDispositivo"
+				styleClass="form-control"
+				value="#{dispositivoController.dispositivo.tipoDispositivo}" maxlength="100"
+				required="true" />
+				
+			<h:outputLabel for="modeloDispositivo" value="Modelo del Dispositivo "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="modeloDispositivo"
+				styleClass="form-control"
+				value="#{dispositivoController.dispositivo.modeloDispositivo}" maxlength="50"
+				required="true" />
+				
+			<h:outputLabel for="descripcionDispositivo" value="Descripcion del Dispositivo "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="descripcionDispositivoo"
+				styleClass="form-control"
+				value="#{dispositivoController.dispositivo.descripcionDispositivo}" maxlength="100"
+				required="true" />
+				
+				<h:outputLabel for="precioDispositivo" value="Precio del Dispositivo "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="precioDispositivo"
+				styleClass="form-control"
+				value="#{dispositivoController.dispositivo.precioDispositivo}" maxlength="4"
+				required="true" />
+				
+				
+			<br/>
+			
+			<p:commandButton value="Actualizar"
+				actionListener="#{dispositivoController.modificar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listDispositivo?faces-redirect=true" />
+				
+			<p:commandButton value="Cancelar"
+				action="listDispositivo?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
